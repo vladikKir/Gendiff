@@ -31,4 +31,4 @@ const getDifference = (file1, file2) => {
   return difference;
 };
 
-export { getDifference };
+export default getDifference;

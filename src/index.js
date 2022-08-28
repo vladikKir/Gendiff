@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
-import { getDifference } from './utilits.js';
+import getDifference from './utilits.js';
 
-const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
+const getAbsolutePath = (filename) => path.resolve(process.cwd(), filename);
 const readFile = (filepath) => fs.readFileSync(getAbsolutePath(filepath), 'utf-8');
 
 const genDiff = (filepath1, filepath2) => {
