@@ -17,8 +17,8 @@ test('flat test', () => {
 });
 
 test('nested test', () => {
-  const file1 = getFixturePath('file1.json');
-  const file2 = getFixturePath('file2.json');
-  const expectedResult = readFile('result_flat.txt');
+  const file1 = getFixturePath('file1_nested.json');
+  const file2 = getFixturePath('file2_nested.yaml');
+  const expectedResult = readFile('result_nested.txt');
   expect(genDiff(file1, file2)).toBe(expectedResult);
 })

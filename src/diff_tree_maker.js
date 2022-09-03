@@ -12,14 +12,14 @@ const getDifferenceTree = (file1, file2) => {
     if (!Object.hasOwn(file2, key)) {
       return { key , type: 'removed', val: value1}
     }
-    if (_.isObject(value1) && _.isObject(value2)) {
+    if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
       return { key, type: 'object', val: getDifferenceTree(value1, value2) }
     }
     if (!_.isEqual(value1, value2)) {
-      return [{ key, type: 'removed', val: value1}, { key, type: 'added', val2: value2}]
+      return { key, type: 'changed', val1: value1, val2: value2}
     }
     return { key, type: 'unchanged', val: value1 }
-  }).flat()
+  })
 };
 
 export default getDifferenceTree;
