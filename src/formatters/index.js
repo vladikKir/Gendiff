@@ -8,7 +8,7 @@ export default (file, format) => {
     case 'plain':
       return plain(file);
     case 'json':
-      return JSON.stringify(file)
+      return JSON.stringify(file);
     default:
       throw new Error('Unexpected format');
   }

@@ -23,7 +23,7 @@ const plain = (data, acc = '') => {
       case 'object':
         return plain(obj.children, `${acc}${obj.key}.`);
       default:
-        throw new Error('Unexpected type')
+        throw new Error('Unexpected type');
     }
   });
   return [...result.filter((string) => string !== 'unchanged')].join('\n');

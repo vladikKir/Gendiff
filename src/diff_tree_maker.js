@@ -16,7 +16,9 @@ const getDifferenceTree = (file1, file2) => {
       return { key, type: 'object', children: getDifferenceTree(value1, value2) };
     }
     if (!_.isEqual(value1, value2)) {
-      return {key, type: 'changed', val1: value1, val2: value2,};
+      return {
+        key, type: 'changed', val1: value1, val2: value2,
+      };
     }
     return { key, type: 'unchanged', val: value1 };
   });
