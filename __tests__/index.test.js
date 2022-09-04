@@ -21,4 +21,12 @@ test('nested test', () => {
   const file2 = getFixturePath('file2_nested.yaml');
   const expectedResult = readFile('result_nested.txt');
   expect(genDiff(file1, file2)).toBe(expectedResult);
-})
+  expect(genDiff(file1, file2, 'stylish')).toBe(expectedResult);
+});
+
+test('plain test', () => {
+  const file1 = getFixturePath('file1_nested.json');
+  const file2 = getFixturePath('file2_nested.yaml');
+  const expectedResult = readFile('result_plain.txt');
+  expect(genDiff(file1, file2, 'plain')).toBe(expectedResult);
+});
