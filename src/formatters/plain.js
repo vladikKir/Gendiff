@@ -18,10 +18,12 @@ const plain = (data, acc = '') => {
         return `Property '${acc}${obj.key}' was removed`;
       case 'changed':
         return `Property '${acc}${obj.key}' was updated. From ${getValue(obj.val1)} to ${getValue(obj.val2)}`;
+      case 'unchanged':
+        return 'unchanged';
       case 'object':
         return plain(obj.children, `${acc}${obj.key}.`);
       default:
-        return 'unchanged';
+        throw new Error('Unexpected type')
     }
   });
   return [...result.filter((string) => string !== 'unchanged')].join('\n');

@@ -30,3 +30,10 @@ test('plain test', () => {
   const expectedResult = readFile('result_plain.txt');
   expect(genDiff(file1, file2, 'plain')).toBe(expectedResult);
 });
+
+test('json test', () => {
+  const file1 = getFixturePath('file1_nested.json');
+  const file2 = getFixturePath('file2_nested.yaml');
+  const expectedResult = readFile('result_json.txt');
+  expect(genDiff(file1, file2, 'json')).toBe(expectedResult);
+});

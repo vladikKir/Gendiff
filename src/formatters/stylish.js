@@ -30,7 +30,7 @@ const stylish = (data) => {
       case 'object':
         return `${indent}${obj.key}: ${['{', ...iter(obj.children, depth + 1), `${indent}}`].join('\n')}`;
       default:
-        throw new Error('Unexpected object type');
+        throw new Error('Unexpected type');
     }
   });
 
