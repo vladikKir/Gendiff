@@ -1,19 +1,27 @@
-import fs from 'fs';
-import path from 'path';
-import process from 'process';
-import parse from './parsers.js';
-import getDifferenceTree from './diff_tree_maker.js';
-import useFormat from './formatters/index.js';
+import _ from 'lodash';
 
-const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
-const readFile = (filepath) => fs.readFileSync(getAbsolutePath(filepath), 'utf-8');
-const getFormat = (filepath) => path.extname(filepath).slice(1);
+const getDifferenceTree = (file1, file2) => {
+  const result = _.sortBy(Object.keys({ ..._.cloneDeep(file1), ..._.cloneDeep(file2) }));
+  return result.map((key) => {
+    const value1 = file1[key];
+    const value2 = file2[key];
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
-  const file1 = parse(readFile(filepath1), getFormat(filepath1));
-  const file2 = parse(readFile(filepath2), getFormat(filepath2));
-  const differenceTree = getDifferenceTree(file1, file2);
-  return useFormat(differenceTree, format);
+    if (!Object.hasOwn(file1, key)) {
+      return { key, type: 'added', val: value2 };
+    }
+    if (!Object.hasOwn(file2, key)) {
+      return { key, type: 'removed', val: value1 };
+    }
+    if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
+      return { key, type: 'object', children: getDifferenceTree(value1, value2) };
+    }
+    if (!_.isEqual(value1, value2)) {
+      return {
+        key, type: 'changed', val1: value1, val2: value2,
+      };
+    }
+    return { key, type: 'unchanged', val: value1 };
+  });
 };
 
-export default genDiff;
+export default getDifferenceTree;
