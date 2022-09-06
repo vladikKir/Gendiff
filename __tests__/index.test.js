@@ -13,7 +13,7 @@ test.each([
   ['file1.json', 'file2.json', 'stylish', 'result_flat.txt'],
   ['file1_nested.json', 'file2_nested.yaml', 'stylish', 'result_nested.txt'],
   ['file1_nested.json', 'file2_nested.yaml', 'plain', 'result_plain.txt'],
-  ['file1_nested.json', 'file2_nested.yaml', 'json', 'result_json.txt']
+  ['file1_nested.json', 'file2_nested.yaml', 'json', 'result_json.txt'],
 ])('gendiff test %s, %s, %s', (file1, file2, format, result) => {
   const file1Path = getFixturePath(file1);
   const file2Path = getFixturePath(file2);
