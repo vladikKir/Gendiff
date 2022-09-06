@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const getDifferenceTree = (file1, file2) => {
-  const result = _.sortBy(Object.keys({ ..._.cloneDeep(file1), ..._.cloneDeep(file2) }));
+  const result = _.sortBy(Object.keys({ ...(file1), ...(file2) }));
   return result.map((key) => {
     const value1 = file1[key];
     const value2 = file2[key];

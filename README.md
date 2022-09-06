@@ -5,17 +5,19 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/96033f05bb01d4723f62/test_coverage)](https://codeclimate.com/github/vladikKir/frontend-project-46/test_coverage)
 
 ## Usage:
-gendiff [options] <filepath1> <filepath2>
+usage: gendiff [options] filepath1 filepath2
 
-Compares two configuration files and shows a difference.
+Compares two configuration files and shows a difference in the selected format
 
 Options:
-  -V, --version        output the version number
-  -f, --format <type>  output format (default: "stylish")
-  -h, --help           display help for command
 
-Supported files formats: json, yml, yaml
+-V, --version        output the version number
+-f, --format 'type'  output format (default: "stylish")
+-h, --help           display help for command
+
 Outputs formats: stylish(default), plain, json
+Supported files formats: json, yml, yaml
+
 
 ## Minimal system requirements:
 Node.js 16+
@@ -34,3 +36,6 @@ make install
 
 ## Plain example:
 [![asciicast](https://asciinema.org/a/8bBvUt22AgjuMGFKpscxLzBwC.svg)](https://asciinema.org/a/8bBvUt22AgjuMGFKpscxLzBwC)
+
+## Json example:
+[![asciicast](https://asciinema.org/a/zJvXGDqOd5XMHHjnEkkEO3Wqq.svg)](https://asciinema.org/a/zJvXGDqOd5XMHHjnEkkEO3Wqq)
