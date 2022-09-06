@@ -11,11 +11,11 @@ Compares two configuration files and shows a difference in the selected format
 
 Options:
 
--V, --version        output the version number
--f, --format 'type'  output format (default: "stylish")
--h, --help           display help for command
+-V, --version        output the version number  
+-f, --format 'type'  output format (default: "stylish")  
+-h, --help           display help for command  
 
-Outputs formats: stylish(default), plain, json
+Outputs formats: stylish(default), plain, json  
 Supported files formats: json, yml, yaml
 
 
